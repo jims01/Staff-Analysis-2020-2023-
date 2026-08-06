@@ -87,6 +87,4 @@ The analysis results are summarized as follow:
 - Data Visualization: Integrate visual tools such as Tableau, Power BI, or Matplotlib to create impactful charts and graphs.
 - Detailed Reporting: Enhance the analysis with narrative insights and visual representations.
 
-  ### References
-  - AlexTheAnalyst
 😄
