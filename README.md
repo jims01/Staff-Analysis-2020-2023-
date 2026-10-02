@@ -8,6 +8,7 @@
 - [Exploratory Data Analysis](#exploratory-data-analysis)
 - [Data Analysis](#data-analysis)
 - [Results](#results)
+- [Data Visualization](#data-visualization)
 - [Limitations](#limitations)
 - [Next Steps](#next-steps)
 - [References](#references)
@@ -25,6 +26,8 @@ The primary dataset used for this analysis is "layoffs.csv", containing global l
 
 - MySQL- Data cleaning and Exploratory Data Analysis
   - [Download here](https://mysql.com)
+- Power BI - Data modelling and DAX measures for an interactive dashboard
+  - [Download here](https://powerbi.microsoft.com)
 
 ### Data cleaning 
 
@@ -80,11 +83,37 @@ The analysis results are summarized as follow:
 - 2022: Meta, Amazon, Cisco, Pleoton and Carvana/Philips
 - 2023: Google, Microsoft, Ericsson, Amazon/Salesforce and Dell.
 
+### Data Visualization
+
+To extend the SQL analysis, the cleaned dataset was rebuilt as an interactive Power BI dashboard, with a focus on practicing DAX and time-intelligence patterns.
+
+**Data model**
+- A dedicated date table was built with `CALENDAR()` spanning the data's full date range, and explicitly marked as the model's official date table, which is what enables time-intelligence functions like `SAMEPERIODLASTYEAR` to work correctly.
+
+**Measures**
+- `Total Layoffs` — `SUM` of layoffs
+- `Number of Companies` — `DISTINCTCOUNT` of companies with a recorded layoff
+- `Avg Percentage Laid Off` — `AVERAGE` of the percentage of staff laid off
+- `Layoffs LY` — prior-year layoffs for the same period, using `CALCULATE` with `SAMEPERIODLASTYEAR`
+- `YoY % Change` — year-over-year change, using `DIVIDE` to avoid divide-by-zero errors
+
+**Dashboard**
+- KPI cards for the headline totals
+- A year-by-year trend chart, with 2023 visually flagged in a different color since the data only covers January–March of that year - the YoY comparison for 2023 is real, but it compares partial years, not full ones
+- Layoffs broken down by industry and by funding stage, each sorted to surface the largest categories first
+- An interactive year slicer
+
+**Data-quality decisions**
+- One row had no recorded date at all and was excluded, since it couldn't be placed in any time-based analysis
+- Rows with no recorded funding stage (`NULL`) were excluded from the stage breakdown
+
+**A note on the totals:** this dashboard's totals (~193K layoffs, ~820 companies) are noticeably different from the SQL results above (383,159 layoffs, 116 companies). This project was originally built by following a tutorial, and the exact cleaning logic behind the SQL numbers - in particular, how missing `total_laid_off` values were handled - wasn't something I tracked closely enough at the time to reconstruct with confidence. The Power BI analysis excludes rows with missing values rather than estimating them, which is almost certainly part of the gap, but I can't currently confirm it's the whole story. Flagging this honestly rather than presenting two unexplained numbers side by side.
+
 ### Limitations
  A limitation of this analysis is the absence of data on the number of staff remaining after the layoffs.
 
 ### Next Steps
-- Data Visualization: Integrate visual tools such as Tableau, Power BI, or Matplotlib to create impactful charts and graphs.
+- Reconcile the totals between the SQL and Power BI analyses, and document the cleaning logic clearly enough this time to avoid the same gap in future
 - Detailed Reporting: Enhance the analysis with narrative insights and visual representations.
 
 😄
