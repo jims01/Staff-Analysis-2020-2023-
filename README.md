@@ -102,6 +102,7 @@ To extend the SQL analysis, the cleaned dataset was rebuilt as an interactive Po
 - A year-by-year trend chart, with 2023 visually flagged in a different color since the data only covers January–March of that year - the YoY comparison for 2023 is real, but it compares partial years, not full ones
 - Layoffs broken down by industry and by funding stage, each sorted to surface the largest categories first
 - An interactive year slicer
+[View the full dashboard (PDF)](Global_Layoffs_Dashboard.pdf)
 
 **Data-quality decisions**
 - One row had no recorded date at all and was excluded, since it couldn't be placed in any time-based analysis
