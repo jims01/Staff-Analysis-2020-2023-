@@ -11,7 +11,7 @@
 - [Data Visualization](#data-visualization)
 - [Limitations](#limitations)
 - [Next Steps](#next-steps)
-- [References](#references)
+
 ### Project Overview
 ---
 This project analyzes global staff layoffs from 2020 to 2023 to provide insights into trends and patterns during this period. It focuses on identifying monthly and cumulative layoffs and ranking the top 5 companies with the highest layoffs in each year.
