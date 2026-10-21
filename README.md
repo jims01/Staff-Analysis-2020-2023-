@@ -74,6 +74,8 @@ Select*
 From country_year_ranking
 where ranking <= 5;
 ```
+### T-SQL Analysis (SQL Server)
+Six business questions answered in T-SQL on the cleaned table (CTEs, window functions, joins and subqueries). See [`sql/`](sql/) for the queries and findings.
 ### Results
 The analysis results are summarized as follow:
 - The total layoff between 2020 and 2023: 383,159
