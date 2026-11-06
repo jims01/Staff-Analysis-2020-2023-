@@ -21,3 +21,5 @@ To practise cloud data engineering, I loaded the cleaned layoffs file into Amazo
 - Athena must run in the same region as the bucket, and needs an S3 location for query results.
 - Athena SQL uses `LIMIT` instead of `TOP`, single quotes mean text (not an alias), and `TRY_CAST` turns bad values into NULL.
 - I set up a budget alert before running any queries.
+
+#### Queried the Parquet table from Python with awswrangler (via AWS CloudShell, no access keys) and got the same totals back as a pandas DataFrame.
